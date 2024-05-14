@@ -11,16 +11,16 @@ public class DetalleBienesOServicios
     public int UnidadMedida { get; set; }
     public decimal CantidadReferencia { get; set; }
     public string? UnidadReferencia { get; set; }
-    public List<SubCantidad> SubCantidad { get; set; }
+    public List<SubCantidad>? SubCantidad { get; set; }
     public decimal GradosAlcohol { get; set; }
     public decimal PrecioUnitarioReferencia { get; set; }
     public DateTime FechaElaboracion { get; set; }
     public DateTime FechaVencimientoItem { get; set; }
-    public Mineria Mineria { get; set; }
+    public Mineria? Mineria { get; set; }
     public decimal PrecioUnitarioItem { get; set; }
     public decimal DescuentoMonto { get; set; }
-    public List<SubDescuento> SubDescuento { get; set; }
-    public List<Subrecargo> Subrecargo { get; set; }
-    public List<ImpuestoAdicional> ImpuestoAdicional { get; set; }
+    public List<SubDescuento>? SubDescuento { get; set; }
+    public List<Subrecargo>? Subrecargo { get; set; }
+    public List<ImpuestoAdicional>? ImpuestoAdicional { get; set; }
     public decimal RecargoMonto { get; set; }
 }

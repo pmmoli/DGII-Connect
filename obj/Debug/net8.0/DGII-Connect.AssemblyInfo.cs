@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DGII-Connect")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+650022dab8747089195eefd01327ae40bd654e74")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc7105c86ba4c2025a2878442694f8cefd3ddbc8")]
 [assembly: System.Reflection.AssemblyProductAttribute("DGII-Connect")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DGII-Connect")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

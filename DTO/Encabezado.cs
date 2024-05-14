@@ -14,7 +14,7 @@ public class Encabezado
     public string? BancoPago { get; set; }
     public required Comprador Comprador { get; set; }
     public int TotalPaginas { get; set; }
-    public InformacionesAdicionales InformacionesAdicionales { get; set; }
+    public InformacionesAdicionales? InformacionesAdicionales { get; set; }
     public required Transporte Transporte { get; set; }
     public required OtraMoneda OtraMoneda { get; set; }
 }
