@@ -1,19 +1,15 @@
 ﻿namespace DGII_Connect;
 using System.Text.Json;
-class Program
+class Program()
 {
+    private static CsvToDtoService _service;
+
     static void Main(string[] args)
     {
-        Transporte transporte = new Transporte()
-        {
-            Conductor = "John Doe",
-            DocumentoTransporte = "123456",
-            Ficha = "789",
-            Placa = "ABC123",
-            RutaTransporte = "Route 66",
-            ZonaTransporte = "Zone A",
-            NumeroAlbaran = "987654"
-        };
+        _service = new CsvToDtoService();
+
+        var encabezadoFilePath = ".\Encabezado.txt";
+        Factura factura = CsvToDtoService
 
         string json = JsonSerializer.Serialize(transporte);
         Console.WriteLine(json);

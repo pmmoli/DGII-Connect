@@ -10,7 +10,7 @@ public class Comprador
     public string? DireccionComprador { get; set; }
     public string? MunicipioComprador { get; set; }
     public string? ProvinciaComprador { get; set; }
-    public DateTime FechaEntrega { get; set; }
+    public string? FechaEntrega { get; set; }
     public string? ContactoEntrega { get; set; }
     public string? DireccionEntrega { get; set; }
     public string? TelefonoAdicional { get; set; }

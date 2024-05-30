@@ -7,7 +7,7 @@ public class Encabezado
     public string? IndicadorMontoGravado { get; set; }
     public string? TipoPago { get; set; }
     public string? TerminoPago { get; set; }
-    public DateTime FechaLimitePago { get; set; }
+    public string? FechaLimitePago { get; set; }
     public required List<FormasPago> FormasPago { get; set; }
     public string? TipoCuentaPago { get; set; }
     public string? NumeroCuentaPago { get; set; }
