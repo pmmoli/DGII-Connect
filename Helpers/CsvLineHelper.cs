@@ -8,7 +8,7 @@ public static class CsvLineHelper
         // This is loading empty values for now, but we should have this mocked for future implementations
         Comprador comprador = new Comprador
         {
-            RNCComprador = "",
+            RNCComprador = input.Last(),
             IdentificadorExtranjero = "",
             RazonSocialComprador = "",
             ContactoComprador = "",
