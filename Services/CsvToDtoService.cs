@@ -5,8 +5,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 
-public class CsvToDtoService : ICsvToDtoService
+public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoService
 {
+    private readonly ICompradorService _compradorService = compradorService;
+
+    public ICompradorService CompradorService()
+    {
+        return _compradorService;
+    }
     public Factura LoadCsv(string encabezadoFilePath, string detalleFilePath)
     {
         var encabezadoLines = File.ReadAllLines(encabezadoFilePath);
@@ -41,11 +47,11 @@ public class CsvToDtoService : ICsvToDtoService
                 IndicadorMontoGravado = "",
                 TipoPago = values[2],
                 FechaLimitePago = "",
-                FormasPago = [new FormasPago { MontoPago = int.Parse(values[3]), FormaPago = values[4] }],
+                FormasPago = [new FormasPago { MontoPago = int.Parse(values[5]), FormaPago = values[6] }],
                 TipoCuentaPago = "",
                 NumeroCuentaPago = "",
                 BancoPago = "",
-                Comprador = values.GetComprador(), // Mock Comprador instance
+                Comprador = _compradorService.GetComprador(values[3],values[4]), // Mock Comprador instance
                 TotalPaginas = 1,
                 Transporte = values.GetTransporte(), // Mock Transporte instance
                 OtraMoneda = new OtraMoneda

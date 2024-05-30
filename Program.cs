@@ -6,10 +6,11 @@ class Program()
 
     static void Main(string[] args)
     {
-        _service = new CsvToDtoService();
+        ICompradorService compradorService = new CompradorService();
+        _service = new CsvToDtoService(compradorService);
         
         string encabezadoFilePath = @".\Encabezado.txt";
-        string DetalleFilePath = @".\Encabezado.txt";
+        string DetalleFilePath = @".\Detalle.txt";
         Factura factura = _service.LoadCsv(encabezadoFilePath, DetalleFilePath);
 
         string json = JsonSerializer.Serialize(factura);
