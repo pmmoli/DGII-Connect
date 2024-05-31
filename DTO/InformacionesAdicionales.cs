@@ -2,17 +2,17 @@
 
 public class InformacionesAdicionales
 {
-    public DateTime FechaEmbarque { get; set; }
-    public string? NumeroEmbarque { get; set; }
-    public string? NumeroContenedor { get; set; }
-    public string? NumeroReferencia { get; set; }
-    public string? NombrePuertoEmbarque { get; set; }
-    public decimal PesoBruto { get; set; }
-    public decimal PesoNeto { get; set; }
-    public int UnidadPesoBruto { get; set; }
-    public int UnidadPesoNeto { get; set; }
-    public int CantidadBulto { get; set; }
-    public int UnidadBulto { get; set; }
-    public decimal VolumenBulto { get; set; }
-    public int UnidadVolumen { get; set; }
+    public DateTime FechaEmbarque { get; set; } = DateTime.Today;
+    public string NumeroEmbarque { get; set; } = string.Empty;
+    public string NumeroContenedor { get; set; } = string.Empty;
+    public string NumeroReferencia { get; set; } = string.Empty;
+    public string NombrePuertoEmbarque { get; set; } = string.Empty;
+    public decimal PesoBruto { get; set; } = 0;
+    public decimal PesoNeto { get; set; } = 0;
+    public int UnidadPesoBruto { get; set; } = 0;
+    public int UnidadPesoNeto { get; set; } = 0;
+    public int CantidadBulto { get; set; } = 0;
+    public int UnidadBulto { get; set; } = 0;
+    public decimal VolumenBulto { get; set; } = 0;
+    public int UnidadVolumen { get; set; } = 0;
 }

@@ -10,9 +10,9 @@ public class Factura
     public required List<DetalleBienesOServicios> DetalleBienesOServicios { get; set; }
     public List<DescuentosORecargos>? DescuentosORecargos { get; set; }
     public InformacionReferencia? InformacionReferencia { get; set; }
-    public string? Atributo1 { get; set; }
-    public string? Atributo2 { get; set; }
-    public string? Atributo3 { get; set; }
-    public string? Atributo4 { get; set; }
-    public string? Atributo5 { get; set; }
+    public string Atributo1 { get; set; } = string.Empty;
+    public string Atributo2 { get; set; } = string.Empty;
+    public string Atributo3 { get; set; } = string.Empty;
+    public string Atributo4 { get; set; } = string.Empty;
+    public string Atributo5 { get; set; } = string.Empty;
 }

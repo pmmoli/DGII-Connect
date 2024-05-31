@@ -45,6 +45,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
                 eNCF = values[0],
                 TipoIngresos = values[1],
                 IndicadorMontoGravado = "",
+                InformacionesAdicionales = new InformacionesAdicionales(),
                 TipoPago = values[2],
                 FechaLimitePago = "",
                 FormasPago = [new FormasPago { MontoPago = int.Parse(values[5]), FormaPago = values[6] }],
@@ -79,22 +80,21 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
         var detalle = new DetalleBienesOServicios
         {
             IndicadorFacturacion = values[0],
-            CodigosItem =
-            [
-                new() { TipoCodigo = "", CodigoItem = "" }
-            ],
+            CodigosItem = [new CodigosItem()],
             NombreItem = values[1],
             IndicadorBienoServicio = values[2],
             DescripcionItem = "",
-            CantidadItem = decimal.Parse(values[3]),
+            CantidadItem = decimal.Parse(values[3]), 
             UnidadMedida = 0,
             CantidadReferencia = 0,
             UnidadReferencia = "",
             GradosAlcohol = 0,
+            ImpuestoAdicional = [new ImpuestoAdicional()],
             PrecioUnitarioReferencia = decimal.Parse(values[4]),
             FechaElaboracion = DateTime.MinValue,
             FechaVencimientoItem = DateTime.MinValue,
             Mineria = new Mineria(), // Mock Object
+            SubCantidad = [new SubCantidad()],
             SubDescuento = [new SubDescuento()], // Mock Object
             Subrecargo = [new Subrecargo()], // Mock Object
             PrecioUnitarioItem = 0,

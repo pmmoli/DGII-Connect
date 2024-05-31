@@ -2,6 +2,6 @@
 
 public class CodigosItem
 {
-    public string? TipoCodigo { get; set; }
-    public string? CodigoItem { get; set; }
+    public string TipoCodigo { get; set; } = string.Empty;
+    public string CodigoItem { get; set; } = string.Empty;
 }
