@@ -8,7 +8,8 @@ public class Factura
     public string? CodigoVendedor { get; set; }
     public required Encabezado Encabezado { get; set; }
     public required List<DetalleBienesOServicios> DetalleBienesOServicios { get; set; }
-    public List<DescuentosORecargos>? DescuentosORecargos { get; set; }
+    public string? DescuentosORecargos { get; set; }
+    //public List<DescuentosORecargos>? DescuentosORecargos { get; set; }
     public InformacionReferencia? InformacionReferencia { get; set; }
     public string Atributo1 { get; set; } = string.Empty;
     public string Atributo2 { get; set; } = string.Empty;

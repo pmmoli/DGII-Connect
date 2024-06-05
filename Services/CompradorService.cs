@@ -9,8 +9,8 @@ public class CompradorService : ICompradorService
         Comprador comprador = new()
         {
             RNCComprador = rnc,
-            IdentificadorExtranjero = razonSocial,
-            RazonSocialComprador = string.Empty,
+            IdentificadorExtranjero = string.Empty,
+            RazonSocialComprador = razonSocial,
             ContactoComprador = string.Empty,
             CorreoComprador = string.Empty,
             DireccionComprador = string.Empty,

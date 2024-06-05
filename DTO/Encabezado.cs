@@ -1,5 +1,5 @@
 ﻿namespace DGII_Connect;
-
+using System.Text.Json.Serialization;
 public class Encabezado
 {
     public string? eNCF { get; set; }
@@ -16,5 +16,6 @@ public class Encabezado
     public int TotalPaginas { get; set; }
     public InformacionesAdicionales? InformacionesAdicionales { get; set; }
     public required Transporte Transporte { get; set; }
-    public required OtraMoneda OtraMoneda { get; set; }
+    //[JsonConverter(typeof(NullToEmptyObjectConverter<OtraMoneda>))]
+    public OtraMoneda? OtraMoneda { get; set; }
 }

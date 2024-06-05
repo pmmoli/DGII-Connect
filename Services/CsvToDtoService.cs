@@ -44,7 +44,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
             {
                 eNCF = values[0],
                 TipoIngresos = values[1],
-                IndicadorMontoGravado = "",
+                IndicadorMontoGravado = "0",
                 InformacionesAdicionales = new InformacionesAdicionales(),
                 TipoPago = values[2],
                 FechaLimitePago = "",
@@ -55,14 +55,16 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
                 Comprador = _compradorService.GetComprador(values[3],values[4]), // Mock Comprador instance
                 TotalPaginas = 1,
                 Transporte = values.GetTransporte(), // Mock Transporte instance
-                OtraMoneda = new OtraMoneda
-                {
-                    TipoMoneda = "",
-                    TipoCambio = 0
-                } // Mock OtraMoneda instance
+                // OtraMoneda = new OtraMoneda
+                // {
+                //     TipoMoneda = "DOP",
+                //     TipoCambio = 0
+                // } // Mock OtraMoneda instance
+ // Mock OtraMoneda instance
             },
             DetalleBienesOServicios = detalle,
-            DescuentosORecargos = [new DescuentosORecargos()],
+            //DescuentosORecargos = [new DescuentosORecargos()],
+            DescuentosORecargos = "",
             InformacionReferencia = new InformacionReferencia()
         };
         return factura;
@@ -89,16 +91,16 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
             CantidadReferencia = 0,
             UnidadReferencia = "",
             GradosAlcohol = 0,
-            ImpuestoAdicional = [new ImpuestoAdicional()],
+            ImpuestoAdicional = "",
             PrecioUnitarioReferencia = decimal.Parse(values[4]),
             FechaElaboracion = DateTime.MinValue,
             FechaVencimientoItem = DateTime.MinValue,
             Mineria = new Mineria(), // Mock Object
-            SubCantidad = [new SubCantidad()],
-            SubDescuento = [new SubDescuento()], // Mock Object
-            Subrecargo = [new Subrecargo()], // Mock Object
-            PrecioUnitarioItem = 0,
-            DescuentoMonto = 0
+            SubCantidad = "",
+            SubDescuento = "",
+            Subrecargo = "",
+            PrecioUnitarioItem = 10,
+            DescuentoMonto = decimal.Parse(values[4])
         };
 
         detalleList.Add(detalle);

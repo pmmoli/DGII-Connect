@@ -16,7 +16,11 @@
             string detalleFilePath = @".\Detalle.txt";
             Factura factura = _service.LoadCsv(encabezadoFilePath, detalleFilePath);
 
-            string json = JsonSerializer.Serialize(factura);
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+            string json = JsonSerializer.Serialize(factura, options);
             Console.WriteLine(json);
 
             // Post JSON data to RESTful API
