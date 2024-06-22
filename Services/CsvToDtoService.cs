@@ -37,24 +37,24 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
         {
             
             Fecha = DateTime.Today,
-            NumeroFacturaInterna = "",
-            Sucursal = "",
-            CodigoVendedor = "",
+            // NumeroFacturaInterna = "",
+            // Sucursal = "",
+            // CodigoVendedor = "",
             Encabezado = new Encabezado
             {
                 eNCF = values[0],
                 TipoIngresos = values[1],
                 IndicadorMontoGravado = "0",
-                InformacionesAdicionales = new InformacionesAdicionales(),
+                // InformacionesAdicionales = new InformacionesAdicionales(),
                 TipoPago = values[2],
-                FechaLimitePago = "",
-                FormasPago = [new FormasPago { MontoPago = int.Parse(values[5]), FormaPago = values[6] }],
-                TipoCuentaPago = "",
-                NumeroCuentaPago = "",
-                BancoPago = "",
+                // FechaLimitePago = "",
+                // FormasPago = [new FormasPago { MontoPago = int.Parse(values[5]), FormaPago = values[6] }],
+                //TipoCuentaPago = "",
+                //NumeroCuentaPago = "",
+                //BancoPago = "",
                 Comprador = _compradorService.GetComprador(values[3],values[4]), // Mock Comprador instance
-                TotalPaginas = 1,
-                Transporte = values.GetTransporte(), // Mock Transporte instance
+                // TotalPaginas = 1,
+                // Transporte = values.GetTransporte(), // Mock Transporte instance
                 // OtraMoneda = new OtraMoneda
                 // {
                 //     TipoMoneda = "DOP",
@@ -64,8 +64,8 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
             },
             DetalleBienesOServicios = detalle,
             //DescuentosORecargos = [new DescuentosORecargos()],
-            DescuentosORecargos = "",
-            InformacionReferencia = new InformacionReferencia()
+            // DescuentosORecargos = "",
+            // InformacionReferencia = new InformacionReferencia()
         };
         return factura;
    
@@ -82,25 +82,25 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
         var detalle = new DetalleBienesOServicios
         {
             IndicadorFacturacion = values[0],
-            CodigosItem = [new CodigosItem()],
+            //CodigosItem = [new CodigosItem()],
             NombreItem = values[1],
             IndicadorBienoServicio = values[2],
-            DescripcionItem = "",
+            //DescripcionItem = "",
             CantidadItem = decimal.Parse(values[3]), 
-            UnidadMedida = 0,
-            CantidadReferencia = 0,
-            UnidadReferencia = "",
-            GradosAlcohol = 0,
-            ImpuestoAdicional = "",
+            //UnidadMedida = 0,
+            //CantidadReferencia = 0,
+            //UnidadReferencia = "",
+            //GradosAlcohol = 0,
+            //ImpuestoAdicional = "",
             PrecioUnitarioReferencia = decimal.Parse(values[4]),
-            FechaElaboracion = DateTime.MinValue,
-            FechaVencimientoItem = DateTime.MinValue,
-            Mineria = new Mineria(), // Mock Object
-            SubCantidad = "",
-            SubDescuento = "",
-            Subrecargo = "",
-            PrecioUnitarioItem = 10,
-            DescuentoMonto = decimal.Parse(values[4])
+            //FechaElaboracion = DateTime.MinValue,
+            //FechaVencimientoItem = DateTime.MinValue,
+            // Mineria = new Mineria(), // Mock Object
+            // SubCantidad = "",
+            //SubDescuento = "",
+            // Subrecargo = "",
+            PrecioUnitarioItem = decimal.Parse(values[4]),
+            DescuentoMonto = decimal.Parse(values[5])
         };
 
         detalleList.Add(detalle);

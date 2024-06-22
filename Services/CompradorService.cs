@@ -9,22 +9,22 @@ public class CompradorService : ICompradorService
         Comprador comprador = new()
         {
             RNCComprador = rnc,
-            IdentificadorExtranjero = string.Empty,
+            // IdentificadorExtranjero = string.Empty,
             RazonSocialComprador = razonSocial,
-            ContactoComprador = string.Empty,
-            CorreoComprador = string.Empty,
-            DireccionComprador = string.Empty,
-            MunicipioComprador = string.Empty,
-            ProvinciaComprador = string.Empty,
+            // ContactoComprador = string.Empty,
+            // CorreoComprador = string.Empty,
+            // DireccionComprador = string.Empty,
+            // MunicipioComprador = string.Empty,
+            // ProvinciaComprador = string.Empty,
             FechaEntrega = DateTime.Today.ToString(),
-            ContactoEntrega = string.Empty,
-            DireccionEntrega = string.Empty,
-            TelefonoAdicional = string.Empty,
-            FechaOrdenCompra = string.Empty,
-            NumeroOrdenCompra = string.Empty,
-            CodigoInternoComprador = string.Empty,
-            ResponsablePago = string.Empty,
-            InformacionAdicionalComprador = string.Empty
+            // ContactoEntrega = string.Empty,
+            // DireccionEntrega = string.Empty,
+            // TelefonoAdicional = string.Empty,
+            // FechaOrdenCompra = string.Empty,
+            // NumeroOrdenCompra = string.Empty,
+            // CodigoInternoComprador = string.Empty,
+            // ResponsablePago = string.Empty,
+            // InformacionAdicionalComprador = string.Empty
         };
 
         return comprador;

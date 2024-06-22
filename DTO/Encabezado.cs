@@ -6,16 +6,16 @@ public class Encabezado
     public string? TipoIngresos { get; set; }
     public string? IndicadorMontoGravado { get; set; }
     public string? TipoPago { get; set; }
-    public string TerminoPago { get; set; } = string.Empty;
-    public string? FechaLimitePago { get; set; }
-    public required List<FormasPago> FormasPago { get; set; }
+    // public string TerminoPago { get; set; } = string.Empty;
+    /* public string? FechaLimitePago { get; set; }
+    public List<FormasPago>? FormasPago { get; set; }
     public string? TipoCuentaPago { get; set; }
     public string? NumeroCuentaPago { get; set; }
     public string? BancoPago { get; set; }
-    public required Comprador Comprador { get; set; }
-    public int TotalPaginas { get; set; }
+ */    public required Comprador Comprador { get; set; }
+/*     public int TotalPaginas { get; set; }
     public InformacionesAdicionales? InformacionesAdicionales { get; set; }
-    public required Transporte Transporte { get; set; }
+    public Transporte? Transporte { get; set; }
     //[JsonConverter(typeof(NullToEmptyObjectConverter<OtraMoneda>))]
-    public OtraMoneda? OtraMoneda { get; set; }
+    public OtraMoneda? OtraMoneda { get; set; } */
 }
