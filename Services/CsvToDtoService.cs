@@ -15,9 +15,10 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
     }
     public Factura LoadCsv(string encabezadoFilePath, string detalleFilePath)
     {
-        var encabezadoLines = File.ReadAllLines(encabezadoFilePath);
-        var detalleLines = File.ReadAllLines(detalleFilePath);
+        var encabezadoLines = FileReader.ReadJsonFile(encabezadoFilePath);
+        var detalleLines = FileReader.ReadJsonFile(detalleFilePath);
         List<DetalleBienesOServicios> detalle = GetDetalle(detalleLines);
+        Logger.LogInfo("Loading Json File");
 
         // if (encabezadoLines.Length == 0)
         // {
@@ -67,6 +68,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
             // DescuentosORecargos = "",
             // InformacionReferencia = new InformacionReferencia()
         };
+        Logger.LogInfo($"Json Loaded");
         return factura;
    
     }

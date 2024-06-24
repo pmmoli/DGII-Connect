@@ -16,6 +16,7 @@ class Program {
     var options = new JsonSerializerOptions{WriteIndented = true};
     string json = JsonSerializer.Serialize(factura, options);
     Console.WriteLine(json);
+    Logger.LogInfo(json);
 
     // Post JSON data to RESTful API
     PostJsonToApi(json);
@@ -42,12 +43,14 @@ class Program {
       // Check if the request was successful
       if (response.IsSuccessStatusCode) {
         Console.WriteLine("POST request successful!");
+        Logger.LogInfo($"SUCCESS {response.ReasonPhrase}");
         CreateConfirmation();
       } else {
         Console.WriteLine(
             $"POST request failed with status code {response.StatusCode}");
         Console.WriteLine(
             $"POST request failed with status code {response.RequestMessage.ToString()}");
+        Logger.LogInfo($"FAILURE {response.StatusCode} - {response.ReasonPhrase} - {response.RequestMessage.ToString()}");            
       }
     } catch (Exception ex) {
       Console.WriteLine($"An error occurred: {ex.Message}");
