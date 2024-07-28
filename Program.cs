@@ -49,8 +49,8 @@ class Program {
         Console.WriteLine(
             $"POST request failed with status code {response.StatusCode}");
         Console.WriteLine(
-            $"POST request failed with status code {response.RequestMessage.ToString()}");
-        Logger.LogInfo($"FAILURE {response.StatusCode} - {response.ReasonPhrase} - {response.RequestMessage.ToString()}");            
+            $"POST request failed with status code {response.RequestMessage}");
+        Logger.LogInfo($"FAILURE {response.StatusCode} - {response.ReasonPhrase} - {response.RequestMessage}");            
       }
     } catch (Exception ex) {
       Console.WriteLine($"An error occurred: {ex.Message}");
