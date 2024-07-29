@@ -17,7 +17,8 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
     {
         var encabezadoLines = FileReader.ReadJsonFile(encabezadoFilePath);
         var detalleLines = FileReader.ReadJsonFile(detalleFilePath);
-        List<DetalleBienesOServicios> detalle = GetDetalle(detalleLines);
+        List<DetalleBienesOServicios> detalle;
+        Factura? factura = null;
         Logger.LogInfo("Loading Json File");
 
         // if (encabezadoLines.Length == 0)
@@ -33,46 +34,66 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
         // 
         //forget about validation for now
         //
-
-        var factura = new Factura
+        switch (values[0])
         {
-            
-            Fecha = DateTime.Today,
-            // NumeroFacturaInterna = "",
-            // Sucursal = "",
-            // CodigoVendedor = "",
-            Encabezado = new Encabezado
-            {
-                eNCF = values[0],
-                TipoIngresos = values[1],
-                IndicadorMontoGravado = "0",
-                // InformacionesAdicionales = new InformacionesAdicionales(),
-                TipoPago = values[2],
-                // FechaLimitePago = "",
-                // FormasPago = [new FormasPago { MontoPago = int.Parse(values[5]), FormaPago = values[6] }],
-                //TipoCuentaPago = "",
-                //NumeroCuentaPago = "",
-                //BancoPago = "",
-                Comprador = _compradorService.GetComprador(values[3],values[4]), // Mock Comprador instance
-                // TotalPaginas = 1,
-                // Transporte = values.GetTransporte(), // Mock Transporte instance
-                // OtraMoneda = new OtraMoneda
-                // {
-                //     TipoMoneda = "DOP",
-                //     TipoCambio = 0
-                // } // Mock OtraMoneda instance
- // Mock OtraMoneda instance
-            },
-            DetalleBienesOServicios = detalle,
-            //DescuentosORecargos = [new DescuentosORecargos()],
-            // DescuentosORecargos = "",
-            // InformacionReferencia = new InformacionReferencia()
-        };
+            case "22":
+                // Handle option1
+                detalle = GetDetalle(detalleLines);
+                factura = CreateFacturaConsumidorFromValues(values,detalle);
+                break;
+
+            case "31":
+                detalle = GetDetalle(detalleLines);
+                factura = CreateFacturaCreditoFiscalFromValues(values,detalle);
+                break;
+
+            default:
+                // Handle unknown options
+                detalle = GetDetalle(detalleLines);
+                factura = CreateFacturaConsumidorFromValues(values,detalle);
+                break;
+        }
+
         Logger.LogInfo($"Json Loaded");
         return factura;
    
     }
-
+    private Factura CreateFacturaConsumidorFromValues(string[] values, List<DetalleBienesOServicios> detalle)
+    {
+        var factura = new Factura
+        {
+            Fecha = DateTime.Today,
+            Encabezado = new Encabezado
+            {
+                eNCF = values[1],
+                TipoIngresos = values[2],
+                IndicadorMontoGravado = "0",
+                TipoPago = values[3],
+                Comprador = _compradorService.GetComprador(values[4], values[5])
+            },
+            DetalleBienesOServicios = detalle
+        };
+        return factura;
+    }
+        private Factura CreateFacturaCreditoFiscalFromValues(string[] values, List<DetalleBienesOServicios> detalle)
+    {
+        var factura = new Factura
+        {
+            Fecha = DateTime.Today,
+            Encabezado = new Encabezado
+            {
+                FechaVencimientoSecuencia = DateTime.Today.ToString(),
+                eNCF = values[1],
+                TipoIngresos = values[2],
+                IndicadorMontoGravado = "0",
+                TipoPago = values[3],
+                FechaLimitePago = values[6],
+                Comprador = _compradorService.GetComprador(values[4], values[5])
+            },
+            DetalleBienesOServicios = detalle
+        };
+        return factura;
+    }
     private static List<DetalleBienesOServicios> GetDetalle(string[] lines)
     {
         var detalleList = new List<DetalleBienesOServicios>();

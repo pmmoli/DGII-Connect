@@ -6,9 +6,9 @@ public class Encabezado
     public string? TipoIngresos { get; set; }
     public string? IndicadorMontoGravado { get; set; }
     public string? TipoPago { get; set; }
-    // public string TerminoPago { get; set; } = string.Empty;
-    /* public string? FechaLimitePago { get; set; }
-    public List<FormasPago>? FormasPago { get; set; }
+    public string FechaVencimientoSecuencia { get; set; } = string.Empty;
+    public string FechaLimitePago { get; set; } = string.Empty;
+    /* public List<FormasPago>? FormasPago { get; set; }
     public string? TipoCuentaPago { get; set; }
     public string? NumeroCuentaPago { get; set; }
     public string? BancoPago { get; set; }
