@@ -97,6 +97,7 @@
       }
 
       File.WriteAllText(resultPath, $"{apiResponse.eNCF}|{apiResponse.UrlCodigoQr}|{apiResponse.CodigoSeguridad}");
+      Logger.LogInfo(response);
     }
   }
 }

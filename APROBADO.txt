@@ -1,1 +1,1 @@
-E310000000005|https://ecf.dgii.gov.do/TesteCF/ConsultaTimbre?RncEmisor=111111111&RncComprador=132000000&ENCF=E310000000005&FechaEmision=02-08-2024&MontoTotal=59.00&FechaFirma=02-08-2024 07:07:48&CodigoSeguridad=wuFgu9|wuFgu9
+E310000000006|https://ecf.dgii.gov.do/TesteCF/ConsultaTimbre?RncEmisor=111111111&RncComprador=132000000&ENCF=E310000000006&FechaEmision=02-08-2024&MontoTotal=59.00&FechaFirma=02-08-2024 07:29:19&CodigoSeguridad=ag56tR|ag56tR
