@@ -11,6 +11,12 @@ class Program {
 
     string encabezadoFilePath = @".\Encabezado.txt";
     string detalleFilePath = @".\Detalle.txt";
+    string AprobadoFilePath = @"./APROBADO.txt";
+
+    if (File.Exists(AprobadoFilePath))
+    {
+        File.Delete(AprobadoFilePath);
+    }
     Factura factura = _service.LoadCsv(encabezadoFilePath, detalleFilePath);
 
     var options = new JsonSerializerOptions{WriteIndented = true};
@@ -63,7 +69,7 @@ class Program {
             $"POST request failed with status code {response.StatusCode}");
         Console.WriteLine(
             $"POST request failed with status code {response.RequestMessage}");
-        Logger.LogInfo($"FAILURE {response.StatusCode} - {response.ReasonPhrase} - {response.RequestMessage}");            
+        Logger.LogInfo($"FAILURE {response.StatusCode} - {response.ReasonPhrase} - {response.Content.ReadAsStringAsync().Result}");            
       }
     } catch (Exception ex) {
       Console.WriteLine($"An error occurred: {ex.Message}");
@@ -72,7 +78,7 @@ class Program {
   static void CreateConfirmation(string response) {
     string resultPath = @"./APROBADO.txt";
 
-    File.Create(resultPath).Dispose();
+    File.WriteAllText(resultPath, response);
   }
 }
 }
