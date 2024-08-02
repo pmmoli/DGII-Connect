@@ -1,0 +1,3 @@
+-32 no lleva comprador, lo piden o no?
+-El api ntry en la configuracion, como funciona?
+-Aclarar cual es el endpoint para obtener la secuencia ncf

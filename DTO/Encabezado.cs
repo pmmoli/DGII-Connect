@@ -2,7 +2,8 @@
 using System.Text.Json.Serialization;
 public class Encabezado
 {
-    public string? eNCF { get; set; }
+    public string? TipoeCF { get; set; }
+    //public string? eNCF { get; set; }
     public string? TipoIngresos { get; set; }
     public string? IndicadorMontoGravado { get; set; }
     public string? TipoPago { get; set; }

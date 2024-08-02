@@ -18,15 +18,27 @@ class Program {
     Console.WriteLine(json);
     Logger.LogInfo(json);
 
+    switch (factura.Encabezado.TipoeCF)
+    {
+        case "31":
+            PostJsonToApi(json, "https://test.ecf.citrus.com.do/api/v1/Facturas");
+            break;
+        case "32":
+            PostJsonToApi(json, "https://test.ecf.citrus.com.do/api/v1/FacturaConsumo");
+            break;
+        default:
+            break;
+    } 
     // Post JSON data to RESTful API
-    PostJsonToApi(json);
+
 
     Console.WriteLine("Complete!");
   }
 
-  static void PostJsonToApi(string json) {
+  static void PostJsonToApi(string json, string endpointFactura) {
     // URL of the RESTful API endpoint
-    string apiUrl = "https://test.ecf.citrus.com.do/api/v1/FacturaConsumo";
+    string apiUrl = endpointFactura;
+    string responseText;
 
     // Authorization token (if required)
     string authToken =
@@ -44,7 +56,8 @@ class Program {
       if (response.IsSuccessStatusCode) {
         Console.WriteLine("POST request successful!");
         Logger.LogInfo($"SUCCESS {response.ReasonPhrase}");
-        CreateConfirmation();
+        responseText = response.Content.ReadAsStringAsync().Result;
+        CreateConfirmation(responseText);
       } else {
         Console.WriteLine(
             $"POST request failed with status code {response.StatusCode}");
@@ -56,7 +69,7 @@ class Program {
       Console.WriteLine($"An error occurred: {ex.Message}");
     }
   }
-  static void CreateConfirmation() {
+  static void CreateConfirmation(string response) {
     string resultPath = @"./APROBADO.txt";
 
     File.Create(resultPath).Dispose();

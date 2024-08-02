@@ -36,7 +36,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
         //
         switch (values[0])
         {
-            case "22":
+            case "32":
                 // Handle option1
                 detalle = GetDetalle(detalleLines);
                 factura = CreateFacturaConsumidorFromValues(values,detalle);
@@ -65,7 +65,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
             Fecha = DateTime.Today,
             Encabezado = new Encabezado
             {
-                eNCF = values[1],
+                TipoeCF = "32",
                 TipoIngresos = values[2],
                 IndicadorMontoGravado = "0",
                 TipoPago = values[3],
@@ -82,8 +82,8 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
             Fecha = DateTime.Today,
             Encabezado = new Encabezado
             {
+                TipoeCF = "31",
                 FechaVencimientoSecuencia = DateTime.Today.ToString(),
-                eNCF = values[1],
                 TipoIngresos = values[2],
                 IndicadorMontoGravado = "0",
                 TipoPago = values[3],
