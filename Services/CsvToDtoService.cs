@@ -67,7 +67,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
             {
                 TipoeCF = "32",
                 TipoIngresos = values[2],
-                IndicadorMontoGravado = "0",
+                IndicadorMontoGravado = values[1],
                 TipoPago = values[3],
                 Comprador = _compradorService.GetComprador(values[4], values[5])
             },
@@ -85,7 +85,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
                 TipoeCF = "31",
                 FechaVencimientoSecuencia = DateTime.Today.ToString(),
                 TipoIngresos = values[2],
-                IndicadorMontoGravado = "0",
+                IndicadorMontoGravado = values[1],
                 TipoPago = values[3],
                 FechaLimitePago = values[6],
                 Comprador = _compradorService.GetComprador(values[4], values[5])
