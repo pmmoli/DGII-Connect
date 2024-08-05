@@ -15,6 +15,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
     }
     public Factura LoadCsv(string encabezadoFilePath, string detalleFilePath)
     {
+        Logger.LogInfo("path: " + encabezadoFilePath);
         var encabezadoLines = FileReader.ReadJsonFile(encabezadoFilePath);
         var detalleLines = FileReader.ReadJsonFile(detalleFilePath);
         List<DetalleBienesOServicios> detalle;

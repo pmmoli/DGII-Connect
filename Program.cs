@@ -14,8 +14,9 @@
 
       string encabezadoFilePath = @".\Encabezado.txt";
       string detalleFilePath = @".\Detalle.txt";
-      string AprobadoFilePath = @"./APROBADO.txt";
-
+      string AprobadoFilePath = @".\APROBADO.txt";
+      
+      Logger.LogInfo("START");
       if (File.Exists(AprobadoFilePath))
       {
         File.Delete(AprobadoFilePath);

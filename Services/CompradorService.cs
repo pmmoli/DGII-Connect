@@ -16,7 +16,7 @@ public class CompradorService : ICompradorService
             // DireccionComprador = string.Empty,
             // MunicipioComprador = string.Empty,
             // ProvinciaComprador = string.Empty,
-            FechaEntrega = DateTime.Today.ToString(),
+            FechaEntrega = DateTime.Today.ToShortDateString(),
             // ContactoEntrega = string.Empty,
             // DireccionEntrega = string.Empty,
             // TelefonoAdicional = string.Empty,
