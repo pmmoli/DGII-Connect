@@ -1,1 +1,1 @@
-E310000000014|https://ecf.dgii.gov.do/TesteCF/ConsultaTimbre?RncEmisor=111111111&RncComprador=132000000&ENCF=E310000000014&FechaEmision=05-08-2024&MontoTotal=59.00&FechaFirma=05-08-2024 10:46:49&CodigoSeguridad=VvKnzR|VvKnzR
+E310000000016|https://ecf.dgii.gov.do/TesteCF/ConsultaTimbre?RncEmisor=111111111&RncComprador=132000000&ENCF=E310000000016&FechaEmision=05-08-2024&MontoTotal=59.00&FechaFirma=05-08-2024 11:20:55&CodigoSeguridad=GW4Pn7|GW4Pn7

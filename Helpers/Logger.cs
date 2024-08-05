@@ -5,7 +5,7 @@ using System.IO;
 public static class Logger
 {
     private static readonly object _lock = new();
-    private static readonly string _logFilePath = "./application.log";
+    private static readonly string _logFilePath = @".\application.log";
 
     public static void LogInfo(string message)
     {
