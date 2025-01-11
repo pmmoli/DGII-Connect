@@ -64,7 +64,6 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
                 factura = CreateFacturaConsumidorFromValues(values,detalle);
                 break;
         }
-
         Logger.LogInfo($"Json Loaded");
         return factura;
    
