@@ -14,8 +14,10 @@
 
       string encabezadoFilePath = @".\Encabezado.txt";
       string detalleFilePath = @".\Detalle.txt";
-      string AprobadoFilePath = @"./APROBADO.txt";
+      string AprobadoFilePath = @".\APROBADO.txt";
 
+      Logger.LogInfo("START");
+      Console.WriteLine("Complete!");
       if (File.Exists(AprobadoFilePath))
       {
         File.Delete(AprobadoFilePath);
@@ -29,7 +31,7 @@
 
       switch (factura.Encabezado.TipoeCF)
       {
-        case "31":
+        case "31": case "44": case "45": //There must be a cleaner way....
           PostJsonToApi(json, "https://test.ecf.citrus.com.do/api/v1/Facturas");
           break;
         case "32":

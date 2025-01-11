@@ -15,6 +15,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
     }
     public Factura LoadCsv(string encabezadoFilePath, string detalleFilePath)
     {
+        Logger.LogInfo("path: " + encabezadoFilePath);
         var encabezadoLines = FileReader.ReadJsonFile(encabezadoFilePath);
         var detalleLines = FileReader.ReadJsonFile(detalleFilePath);
         List<DetalleBienesOServicios> detalle;
@@ -46,6 +47,16 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
                 detalle = GetDetalle(detalleLines);
                 factura = CreateFacturaCreditoFiscalFromValues(values,detalle);
                 break;
+                
+            case "44":
+                detalle = GetDetalle(detalleLines);
+                factura = CreateFacturaRegimenEspecialFromValues(values,detalle);
+                break;
+
+            case "45":
+                detalle = GetDetalle(detalleLines);
+                factura = CreateFacturaComprobanteGubernamentalFromValues(values,detalle);
+                break;
 
             default:
                 // Handle unknown options
@@ -53,7 +64,6 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
                 factura = CreateFacturaConsumidorFromValues(values,detalle);
                 break;
         }
-
         Logger.LogInfo($"Json Loaded");
         return factura;
    
@@ -75,7 +85,7 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
         };
         return factura;
     }
-        private Factura CreateFacturaCreditoFiscalFromValues(string[] values, List<DetalleBienesOServicios> detalle)
+    private Factura CreateFacturaCreditoFiscalFromValues(string[] values, List<DetalleBienesOServicios> detalle)
     {
         var factura = new Factura
         {
@@ -94,6 +104,47 @@ public class CsvToDtoService(ICompradorService compradorService) : ICsvToDtoServ
         };
         return factura;
     }
+    //Tipos 44 y 45 son bastanta similares, podria normalizar esto en 1 funcion pero lo dejare en 2 por si surgen diferencias.
+    private Factura CreateFacturaRegimenEspecialFromValues(string[] values, List<DetalleBienesOServicios> detalle)
+    {
+        var factura = new Factura
+        {
+            Fecha = DateTime.Today,
+            Encabezado = new Encabezado
+            {
+                TipoeCF = "44",
+                FechaVencimientoSecuencia = DateTime.Today.ToString(),
+                TipoIngresos = values[2],
+                IndicadorMontoGravado = values[1],
+                TipoPago = values[3],
+
+                FechaLimitePago = values[6],
+                Comprador = _compradorService.GetComprador(values[4], values[5])
+            },
+            DetalleBienesOServicios = detalle
+        };
+        return factura;
+    }
+    private Factura CreateFacturaComprobanteGubernamentalFromValues(string[] values, List<DetalleBienesOServicios> detalle)
+    {
+        var factura = new Factura
+        {
+            Fecha = DateTime.Today,
+            Encabezado = new Encabezado
+            {
+                TipoeCF = "45",
+                FechaVencimientoSecuencia = DateTime.Today.ToString(),
+                TipoIngresos = values[2],
+                IndicadorMontoGravado = values[1],
+                TipoPago = values[3],
+
+                FechaLimitePago = values[6],
+                Comprador = _compradorService.GetComprador(values[4], values[5])
+            },
+            DetalleBienesOServicios = detalle
+        };
+        return factura;
+    }    
     private static List<DetalleBienesOServicios> GetDetalle(string[] lines)
     {
         var detalleList = new List<DetalleBienesOServicios>();
