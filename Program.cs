@@ -31,7 +31,7 @@
 
       switch (factura.Encabezado.TipoeCF)
       {
-        case "31":
+        case "31": case "44": case "45": //There must be a cleaner way....
           PostJsonToApi(json, "https://test.ecf.citrus.com.do/api/v1/Facturas");
           break;
         case "32":
